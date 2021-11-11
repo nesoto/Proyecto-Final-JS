@@ -1,6 +1,6 @@
 let eleccion;
 let recetas = [];
-
+//////////////Se crea el objeto receta//////////////
 class Receta{
 	Nombre = "";
 	Ingredientes = [];
@@ -12,7 +12,7 @@ class Receta{
 		this.Pasos = pasos;
 	}
 }
-
+//////////////SE INICIA EL PROGRAMA//////////////
 do{
 eleccion = Number(prompt(`¡Bienvenido! 
 ¿Qué deseas hacer?:
@@ -41,7 +41,7 @@ function Inicio(){
 function Menu(eleccion){
 
 	switch(eleccion){
-		case 1:
+		case 1://Ingresar receta
 			let nombre = prompt("Ingresa el nombre de la receta");
 			let ctosingredientes = Number(prompt("Ingresa el número de ingredientes"));
 			let ingredientes = [];
@@ -58,7 +58,7 @@ function Menu(eleccion){
 			Inicio();
 			break;
 		
-		case 2:
+		case 2://Ver recetas
 			for (let i=0; i<recetas.length; i++){
 				console.log(`
 				${i+1}. ${recetas[i].Nombre}
@@ -70,7 +70,7 @@ function Menu(eleccion){
 			Inicio();
 			break;
 		
-		case 3:
+		case 3://Salir
 			alert("¡Hasta luego!");
 			return;
 	}

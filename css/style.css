@@ -8,13 +8,13 @@ h1, h2 {
 	text-align: center;
 }
 
-/*leave centro image on the middle of the page*/
-.centro {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	width: 50%;
-}
+.bg { 
+	background-image: url('resources/background.jpg');
+	height: 100%; 
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+  }
 
 
 

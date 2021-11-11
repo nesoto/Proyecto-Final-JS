@@ -23,6 +23,10 @@ eleccion = Number(prompt(`¡Bienvenido!
 
 Menu(eleccion);
 
+
+
+////////////////////FUNCIONES////////////////////
+
 function Inicio(){
 	do{
 	eleccion = Number(prompt(`¡Bienvenido! 
@@ -77,7 +81,7 @@ let recetas2 = JSON.parse(sessionStorage.getItem("recetas"));
 console.log(recetas2);*/
 
 
-/*  /////////////////IDEAS PARA EL MENU///////////////
+/*  /////////////////IDEAS PARA MAS ADELANTE///////////////
 
 function Menu(eleccion, recetas){
 	eleccion = MMenu();

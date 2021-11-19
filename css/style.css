@@ -4,8 +4,17 @@ body {
 	margin: 0 auto
 }
 
-h1, h2 {
+h1, h2{
 	text-align: center;
+}
+
+.centrar{
+	text-align: center;
+}
+
+select {
+	display: block;
+	margin: 0 auto;
 }
 
 .bg { 

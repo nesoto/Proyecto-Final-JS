@@ -1,5 +1,6 @@
 let eleccion;
 let recetas = [];
+const categoria = document.querySelector("categoria");
 //////////////Se crea el objeto receta//////////////
 class Receta{
 	Nombre = "";
@@ -22,6 +23,7 @@ eleccion = Number(prompt(`¡Bienvenido!
 }while(eleccion != 1 && eleccion != 2 && eleccion != 3);
 
 Menu(eleccion);
+console.log(categoria);
 
 
 
@@ -72,7 +74,7 @@ function Menu(eleccion){
 		
 		case 3://Salir
 			alert("¡Hasta luego!");
-			return;
+			break;
 	}
 }
 

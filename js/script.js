@@ -1,28 +1,70 @@
 let eleccion;
 let recetas = [];
-const categoria = document.querySelector("categoria");
+const categoria = document.getElementById("categoria");// Agarra el valor del select
+
+categoria.addEventListener("change", function(e) { //Evento que se ejecuta al cambiar el valor del select
+	console.log(e.target.value);
+	if (e.target.value == "desayuno"){
+		const display = document.querySelector(".display");
+		display.innerHTML = `
+		<div class="card">
+			<img class="card-image-top" src="/resources/panconhuevo.jpg" />
+			<div class="card-body">
+				<h4 class="card-title">Pan con Huevo</h4>
+				<p class="card-text">
+					<strong>Ingredientes:<br>1.- Pan<br>2.- Huevos...</strong>
+				</p>
+			</div>
+		</div>`;
+	}else if (e.target.value == "null"){
+		const display = document.querySelector(".display");
+		display.innerHTML = "";
+	}else if (e.target.value == "almuerzo"){
+		const display = document.querySelector(".display");
+		display.innerHTML = `
+		<div class="card">
+			<img class="card-image-top" src="/resources/papitas.jpg" />
+			<div class="card-body">
+				<h4 class="card-title">Papas Fritas</h4>
+				<p class="card-text">
+					<strong>Ingredientes:<br>1.-Papas<br>2.- Sal...</strong>
+				</p>
+			</div>
+		</div>`;
+
+	}
+	
+	
+});
+
+
+//////////////////////////////////////ENTREGAS ANTERIORES HACIA ABAJO/////////////////////////////////////////////
+
+
 //////////////Se crea el objeto receta//////////////
 class Receta{
+	Categoria = "";
 	Nombre = "";
 	Ingredientes = [];
 	Pasos = [];
 
-	constructor(nombre, ingredientes, pasos){
+	constructor(cat, nombre, ingredientes, pasos){
+		this.Categoria = cat;
 		this.Nombre = nombre;
 		this.Ingredientes = ingredientes;
 		this.Pasos = pasos;
 	}
 }
 //////////////SE INICIA EL PROGRAMA//////////////
-do{
+/*do{
 eleccion = Number(prompt(`¡Bienvenido! 
 ¿Qué deseas hacer?:
 1.- Ingresar receta
 2.- Ver recetas
 3.- Salir`));
-}while(eleccion != 1 && eleccion != 2 && eleccion != 3);
+}while(eleccion != 1 && eleccion != 2 && eleccion != 3);*/
 
-Menu(eleccion);
+//Menu(eleccion);
 console.log(categoria);
 
 
@@ -37,13 +79,32 @@ function Inicio(){
 	2.- Ver recetas
 	3.- Salir`));
 	}while(eleccion != 1 && eleccion != 2 && eleccion != 3);
-	Menu(eleccion);
+	//Menu(eleccion);
 }
 
 function Menu(eleccion){
 
 	switch(eleccion){
 		case 1://Ingresar receta
+			let aux = Number(prompt(`En que categoria entra tu receta:
+1.- Desayuno
+2.- Almuerzo
+3.- Cena`));
+			let cat;
+			switch(aux){
+				case 1:
+					cat = "Desayuno";
+					break;
+				case 2:
+					cat = "Almuerzo";
+					break;
+				case 3:
+					cat = "Cena";
+					break;
+				default:
+					break;
+			}
+			
 			let nombre = prompt("Ingresa el nombre de la receta");
 			let ctosingredientes = Number(prompt("Ingresa el número de ingredientes"));
 			let ingredientes = [];
@@ -55,7 +116,7 @@ function Menu(eleccion){
 			for (let i=0; i<ctospasos; i++){
 				pasos[i] = " Paso " + (i+1) +": "+(prompt("Ingresa el paso N°"+(i+1)));
 			}
-			let receta = new Receta(nombre, ingredientes, pasos);
+			let receta = new Receta(cat, nombre, ingredientes, pasos);
 			recetas.push(receta);
 			Inicio();
 			break;
@@ -63,7 +124,7 @@ function Menu(eleccion){
 		case 2://Ver recetas
 			for (let i=0; i<recetas.length; i++){
 				console.log(`
-				${i+1}. ${recetas[i].Nombre}
+				${i+1}. ${recetas[i].Nombre} Categoría: ${recetas[i].Categoria}
 				Ingredientes : 
 			   ${recetas[i].Ingredientes}
 				Pasos:
@@ -156,3 +217,4 @@ function MMenu(){
 	return eleccion;
 }
 */
+

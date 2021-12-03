@@ -12,6 +12,12 @@ h1, h2{
 	text-align: center;
 }
 
+.botonr{
+	background-color: #009499;
+	text-align: right;
+	border-radius: 10px;
+	border-color: black;
+}
 select {
 	display: block;
 	margin: 0 auto;
@@ -23,7 +29,17 @@ select {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-  }
+}
+
+#agregar{
+	margin-bottom: 5px;
+	border-radius: 10px;
+	border-color: black;
+	right: 200%;
+	background-color: grey;
+	color: white;
+	position: relative;
+}
 
 
 

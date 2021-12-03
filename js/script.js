@@ -2,13 +2,41 @@ let eleccion;
 let recetas = [];
 const categoria = document.getElementById("categoria");// Agarra el valor del select
 
+/*<input type="text" id="ingrediente" placeholder="Ingrediente" class="centrar">
+<button id="agregar" class="centrar">Agregar</button>
+*/
 categoria.addEventListener("change", function(e) { //Evento que se ejecuta al cambiar el valor del select
-	console.log(e.target.value);
 	if (e.target.value == "desayuno"){
 		const display = document.querySelector(".display");
+		const display2 = document.querySelector(".display2");
+		const display3 = document.querySelector(".display3");
 		display.innerHTML = `
 		<div class="card">
-			<img class="card-image-top" src="/resources/panconhuevo.jpg" />
+			<img class="card-image-top" height="300 "src="/resources/panconhuevo.jpg" />
+			<div class="card-body">
+				<h4 class="card-title">Pan con Huevo</h4>
+				<p class="card-text">
+					<strong>Ingredientes:<br>1.- Pan<br>2.- Huevos...</strong><button class="botonr" id="pchboton" style="text-align="right"">Ver más</button>
+				</p>
+			</div>
+		</div>`;
+		const botonr = document.getElementById("pchboton");
+		botonr.addEventListener("click", function(e) {
+			
+		});
+		display2.innerHTML = `
+		<div class="card">
+			<img class="card-image-top" height="300 "src="/resources/panconhuevo.jpg" />
+			<div class="card-body">
+				<h4 class="card-title">Pan con Huevo</h4>
+				<p class="card-text">
+					<strong>Ingredientes:<br>1.- Pan<br>2.- Huevos...</strong>
+				</p>
+			</div>
+		</div>`;
+		display3.innerHTML = `
+		<div class="card">
+			<img class="card-image-top" height="300 "src="/resources/panconhuevo.jpg" />
 			<div class="card-body">
 				<h4 class="card-title">Pan con Huevo</h4>
 				<p class="card-text">
@@ -18,12 +46,18 @@ categoria.addEventListener("change", function(e) { //Evento que se ejecuta al ca
 		</div>`;
 	}else if (e.target.value == "null"){
 		const display = document.querySelector(".display");
+		const display2 = document.querySelector(".display2");
+		const display3 = document.querySelector(".display3");
 		display.innerHTML = "";
+		display2.innerHTML = "";
+		display3.innerHTML = "";
 	}else if (e.target.value == "almuerzo"){
 		const display = document.querySelector(".display");
+		const display2 = document.querySelector(".display2");
+		const display3 = document.querySelector(".display3");
 		display.innerHTML = `
 		<div class="card">
-			<img class="card-image-top" src="/resources/papitas.jpg" />
+			<img class="card-image-top" height="300" src="/resources/papitas.jpg" />
 			<div class="card-body">
 				<h4 class="card-title">Papas Fritas</h4>
 				<p class="card-text">
@@ -31,6 +65,8 @@ categoria.addEventListener("change", function(e) { //Evento que se ejecuta al ca
 				</p>
 			</div>
 		</div>`;
+		display2.innerHTML = "";
+		display3.innerHTML = "";
 
 	}
 	
@@ -38,11 +74,16 @@ categoria.addEventListener("change", function(e) { //Evento que se ejecuta al ca
 });
 
 
+
+
+
+
+
 //////////////////////////////////////ENTREGAS ANTERIORES HACIA ABAJO/////////////////////////////////////////////
 
 
 //////////////Se crea el objeto receta//////////////
-class Receta{
+/*class Receta{
 	Categoria = "";
 	Nombre = "";
 	Ingredientes = [];
@@ -54,7 +95,9 @@ class Receta{
 		this.Ingredientes = ingredientes;
 		this.Pasos = pasos;
 	}
-}
+}*/
+
+
 //////////////SE INICIA EL PROGRAMA//////////////
 /*do{
 eleccion = Number(prompt(`¡Bienvenido! 
@@ -138,83 +181,3 @@ function Menu(eleccion){
 			break;
 	}
 }
-
-/*sessionStorage.setItem("recetas", JSON.stringify(recetas));
-let recetas2 = JSON.parse(sessionStorage.getItem("recetas"));
-console.log(recetas2);*/
-
-
-/*  /////////////////IDEAS PARA MAS ADELANTE///////////////
-
-function Menu(eleccion, recetas){
-	eleccion = MMenu();
-	switch(eleccion){
-		case 1:
-			aux = AgregarReceta();
-			recetas.push(aux);
-			Menu(eleccion, recetas);
-			break;
-		case 2:
-			for (let i=0; i<recetas.length; i++){
-				if (recetas.length == 0){
-					console.log("No hay recetas");
-					Menu(eleccion, recetas);
-				}else{
-				VerRecetas(recetas, i);
-				}
-			}
-			Menu(eleccion, recetas);
-			break;
-		case 3:
-			console.log("¡Hasta luego!");
-			exit;
-	}
-	break;
-}
-
-
-function AgregarReceta(){
-
-	let nombre = prompt("Ingresa el nombre de la receta");
-		let ctosingredientes = Number(prompt("Ingresa el número de ingredientes"));
-		let ingredientes = [];
-		for (let i=0; i<ctosingredientes; i++){
-			ingredientes[i] = `${i+1}.- `+(prompt("Ingresa el ingrediente N°"+(i+1)));
-		}
-		let ctospasos = Number(prompt("Ingresa el número de pasos"));
-		let pasos = [];
-		for (let i=0; i<ctospasos; i++){
-			pasos[i] = "Paso " + (i+1) +": "+(prompt("Ingresa el paso N°"+(i+1)));
-		}
-	return ({Nombre: nombre, Ingredientes: ingredientes, Pasos: pasos});
-
-}
-
-function VerReceta(receta, j){
-	console.log("RECETAS");
-	console.log(`${receta[j].Nombre}`);
-	console.log(`Ingredientes:`);
-	for (let i=0; i<receta[j].Ingredientes.length; i++){
-		console.log(receta[j].Ingredientes[i]);
-	}
-	console.log(`Pasos:`);
-	for (let i=0; i<receta[j].Pasos.length; i++){
-		console.log(receta[j].Pasos[i]);
-	}
-	break;
-
-}
-
-function MMenu(){
-	let eleccion;
-	do{
-	eleccion = Number(prompt(`¡Bienvenido! 
-¿Qué deseas hacer?:
-1.- Ingresar receta
-2.- Ver recetas
-3.- Salir`));
-	}while(eleccion != 1 && eleccion != 2 && eleccion != 3);
-	return eleccion;
-}
-*/
-
